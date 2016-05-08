@@ -17,7 +17,6 @@ streznik.set('view engine', 'ejs');
 streznik.use(express.static('public'));
 streznik.use(
   expressSession({
-    prijavljenost: false,
     secret: '1234567890QWERTY', // Skrivni ključ za podpisovanje piškotkov
     saveUninitialized: true,    // Novo sejo shranimo
     resave: false,              // Ne zahtevamo ponovnega shranjevanja
@@ -31,7 +30,7 @@ var razmerje_usd_eur = 0.877039116;
 
 function davcnaStopnja(izvajalec, zanr) {
   switch (izvajalec) {
-    case "Queen": case "Led Zepplin": case "Kiss":
+    case "Queen": case "Led Zeppelin": case "Kiss":
       return 0;
     case "Justin Bieber":
       return 22;
