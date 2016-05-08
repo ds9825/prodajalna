@@ -103,7 +103,7 @@ var pesmiIzKosarice = function(zahteva, callback) {
         callback(false);
       } else {
         for (var i=0; i<vrstice.length; i++) {
-          vrstice[i].stopnja = davcnaStopnja(vrstice[i].izvajalec, vrstice[i].zanr);
+          vrstice[i].stopnja = davcnaStopnja((vrstice[i].opisArtikla.split(' (')[1]).split(')')[0], vrstice[i].zanr);
         }
         callback(vrstice);
       }
