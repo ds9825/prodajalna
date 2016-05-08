@@ -166,7 +166,6 @@ var strankaIzRacuna = function(racunId, callback) {
 // Izpis računa v HTML predstavitvi na podlagi podatkov iz baze
 streznik.post('/izpisiRacunBaza', function(zahteva, odgovor) {
   var form = new formidable.IncomingForm();
-  
   form.parse(zahteva, function (napaka1, polja, datoteke) {
     var racun = polja.seznamRacunov;
     strankaIzRacuna(racun, function(stranka) {
@@ -177,12 +176,12 @@ streznik.post('/izpisiRacunBaza', function(zahteva, odgovor) {
           odgovor.send("<p>Na računu ni nobene pesmi, \
           zato ga ni mogoče pripraviti!</p>");
         } else {
-          var narocnik = stranka[0];
+        
           odgovor.setHeader('content-type', 'text/xml');
           odgovor.render('eslog', {
             vizualiziraj: true,
             postavkeRacuna: pesmi,
-            stranka: narocnik
+            stranka: stranka
           })
         }
       })
@@ -206,10 +205,9 @@ streznik.get('/izpisiRacun/:oblika', function(zahteva, odgovor) {
         vizualiziraj: zahteva.params.oblika == 'html' ? true : false,
         postavkeRacuna: pesmi,
         stranka: notes
-      })  
-    }
+        })  
+      }
     })
-    
   })
 })
 
